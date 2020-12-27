@@ -1,4 +1,3 @@
-import sys
 import pandas as pd
 import yfinance as yf
 
@@ -37,6 +36,6 @@ def export(dataFrame):
 
 # to run type 'sh setup.sh'
 if __name__ == '__main__':
-    watchList = fetchWatchlist(sys.argv[1])
+    watchList = fetchWatchlist("/var/inputs/500.csv")
     dataFrame = batchedFetchTicker(watchList)
     export(dataFrame)
