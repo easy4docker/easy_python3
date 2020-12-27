@@ -16,7 +16,7 @@ def fetchTicker(tickers, period="10y"):
     return dataFrame
 
 def export(dataFrame):
-    dataFrame.to_csv(path_or_buf="data/{0}.csv".format(date.today().strftime("%b-%d-%Y")), index=False)
+    dataFrame.to_csv(path_or_buf="../data/{0}.csv".format(date.today().strftime("%b-%d-%Y")), index=False)
 
 def fetchWatchlist(fileName):
     dataFrame = pd.read_csv(fileName)
@@ -24,6 +24,6 @@ def fetchWatchlist(fileName):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    watchList = fetchWatchlist('../data/500.csv')
+    watchList = fetchWatchlist('../data/inputs/500.csv')
     toExport = fetchTicker(watchList[0:254])
     export(toExport)
