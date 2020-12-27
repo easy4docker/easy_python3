@@ -6,6 +6,8 @@
   
   SCR_DIR=$(pwd)
   
+  rm -fr ${SCR_DIR}/data &&  rm -fr ${SCR_DIR}/code
+  
   mkdir -p ${SCR_DIR}/data &&  mkdir -p ${SCR_DIR}/code
   
   cd ${SCR_DIR}/code
