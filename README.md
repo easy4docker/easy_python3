@@ -14,5 +14,5 @@ docker image rm easydocker-python-image
 
 docker build -f dockerFile -t easydocker-python-image .
 
-docker run -it  --name easydocker-python-container easydocker-python-image
+docker run -it  --name easydocker-python-container -v "${SCR_DIR}":/var/app easydocker-python-image 
 
