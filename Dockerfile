@@ -10,4 +10,4 @@ RUN apt-get update \
   && pip3 install yfinance --upgrade --no-cache-dir \
   && pip3 install pandas
 
-# ENTRYPOINT /var/app/src && python3 historical.py var/app/inputs/500.csv
+# ENTRYPOINT /var/app/src && python3 historical.py
