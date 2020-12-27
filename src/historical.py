@@ -1,7 +1,12 @@
+import sys
 import pandas as pd
 import yfinance as yf
 
 from datetime import date
+
+def fetchWatchlist(fileName):
+    dataFrame = pd.read_csv(fileName)
+    return dataFrame["Symbol"].tolist()
 
 def fetchTicker(tickers, period="10y"):
     yTickers = yf.Tickers(" ".join(tickers))
@@ -15,15 +20,23 @@ def fetchTicker(tickers, period="10y"):
         dataFrame = pd.concat([dataFrame, filtered])
     return dataFrame
 
+def batchedFetchTicker(fetchList):
+    dataFrame = pd.DataFrame()
+    total = len(fetchList)
+    fromFetched = 0
+    while fromFetched < total:
+        toFetched = total if total - fromFetched < 254 else fromFetched + 254
+        toExport = fetchTicker(fetchList[fromFetched:toFetched])
+        dataFrame = pd.concat([dataFrame, toExport])
+        fromFetched = toFetched + 1
+    return dataFrame
+
+
 def export(dataFrame):
-    dataFrame.to_csv(path_or_buf="../../data/{0}.csv".format(date.today().strftime("%b-%d-%Y")), index=False)
+    dataFrame.to_csv(path_or_buf="/var/appData/{0}.csv".format(date.today().strftime("%b-%d-%Y")), index=False)
 
-def fetchWatchlist(fileName):
-    dataFrame = pd.read_csv(fileName)
-    return dataFrame["Symbol"].tolist()
-
-# Press the green button in the gutter to run the script.
+# to run type 'sh setup.sh'
 if __name__ == '__main__':
-    watchList = fetchWatchlist('../inputs/500.csv')
-    toExport = fetchTicker(watchList[0])
-    export(toExport)
+    watchList = fetchWatchlist(sys.argv[1])
+    dataFrame = batchedFetchTicker(watchList)
+    export(dataFrame)
