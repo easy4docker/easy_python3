@@ -9,3 +9,5 @@ RUN apt-get update \
   && pip3 install --upgrade pip \
   && pip3 install yfinance --upgrade --no-cache-dir \
   && pip3 install pandas
+
+CMD "cd /var/code/src && python3 historical.py"
