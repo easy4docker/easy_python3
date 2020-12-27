@@ -1,2 +1,0 @@
-pandas>=0.24
-yfinance>=0.1.55

@@ -2,6 +2,10 @@
 
 SCR_DIR=$(pwd)
 
+sudo apt-get update
+sudo apt install git-all
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+
 rm -fr ${SCR_DIR}/data && rm -fr ${SCR_DIR}/code
 
 mkdir -p ${SCR_DIR}/data && mkdir -p ${SCR_DIR}/code && mkdir -p ${SCR_DIR}/inputs
