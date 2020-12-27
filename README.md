@@ -2,6 +2,8 @@
 
 1. create setup.sh file:
 
+  #!/bin/bash
+  
   SCR_DIR=$(cd `dirname $0` && pwd)
   
   echo ${SCR_DIR}/code
