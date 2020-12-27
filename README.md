@@ -2,9 +2,9 @@
 
 command line to run docker container
 
-- docker contaniner stop -f easydocker-python-container
-- docker contaniner rm -f easydocker-python-container
-- docker image rm -f easydocker-python-image
+- docker container stop easydocker-python-container
+- docker container rm easydocker-python-container
+- docker image rm easydocker-python-image
 
 - docker build -f dockerFile -t easydocker-python-image .
-- docker run -it --name easydocker-python-container easydocker-python-image 
+- docker run -it  --name easydocker-python-container easydocker-python-image 
