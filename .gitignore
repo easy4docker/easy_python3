@@ -1,4 +1,4 @@
 .idea/
 /env
 /venv
-/data/*.csv
+/code
