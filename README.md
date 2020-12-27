@@ -4,6 +4,8 @@
 
   SCR_DIR=$(cd `dirname $0` && pwd)
   
+  echo ${SCR_DIR}/code
+  
   mkdir -p ${SCR_DIR}/code && mkdir -p ${SCR_DIR}/data
   
   git clone https://github.com/easy4docker/easy_python3.git ${SCR_DIR}/code
