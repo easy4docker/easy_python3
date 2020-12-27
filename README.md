@@ -1,6 +1,6 @@
 # easy_python3 setup document
 
-1. create setup file:
+1. create setup.sh file:
 
   SCR_DIR=$(cd `dirname $0` && pwd)
   
