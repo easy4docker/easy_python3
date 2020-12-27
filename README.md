@@ -4,7 +4,7 @@
 
   #!/bin/bash
   
-  SCR_DIR=$(cd `dirname $0` && pwd)
+  SCR_DIR=$(pwd)
   
   echo ${SCR_DIR}/code
   
