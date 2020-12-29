@@ -14,6 +14,7 @@ def fetchTicker(tickers, period="10y"):
         history = yTickers.tickers[tindex].history(period=period)
         filtered = history.filter(items=['Open', 'Close', 'High', 'Low', 'Volume'])
         filtered.reset_index(inplace=True, col_level=0)
+        intermediateExport(filtered, yTickers.tickers[tindex].ticker)
         filtered.insert(0, "Ticker", yTickers.tickers[tindex].ticker, True)
 
         dataFrame = pd.concat([dataFrame, filtered])
@@ -30,11 +31,13 @@ def batchedFetchTicker(fetchList):
         fromFetched = toFetched + 1
     return dataFrame
 
-
 def export(dataFrame):
     dataFrame.to_csv(path_or_buf="/var/appData/{0}.csv".format(date.today().strftime("%b-%d-%Y")), index=False)
 
-# to run type 'sh setup.sh'
+def intermediateExport(dataFrame, ticker: str):
+    dataFrame.to_csv(path_or_buf="/var/appData/{0}.csv".format(ticker), index=False)
+
+# first run 'sh setup.sh'
 if __name__ == '__main__':
     watchList = fetchWatchlist("/var/inputs/500.csv")
     dataFrame = batchedFetchTicker(watchList)
