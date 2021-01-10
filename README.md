@@ -27,4 +27,8 @@
 2. run setup
 
   sh setup.sh
+  
+3. When the setup code has finished creating the virtual environment, go to /var/app/src, run python3 historical.py to fetch the data.
+4. Fetched data will be in /var/appData
+5. To get the correlation, go to /var/app/src run python3 correlation.py [Stock1] [Stock2]
 
